@@ -1,0 +1,480 @@
+/* ==========================================
+   GLOBAL STYLES & RESET
+   ========================================== */
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+  color: #172554;
+  background: #f3f6fc;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f4f7ff, #eef2f9);
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.05);
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Base Dashboard Wrapper & Theme Transitions */
+.dashboard {
+  min-height: 100vh;
+  padding: 32px 24px;
+  background: #f8fafc;
+  color: #0f172a;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.app {
+  max-width: 1250px;
+  margin: 0 auto;
+}
+
+/* ==========================================
+   HEADER BANNER
+   ========================================== */
+header {
+  background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+  color: white;
+  padding: 35px;
+  border-radius: 18px;
+  margin-bottom: 26px;
+  box-shadow: 0 12px 30px rgba(37, 99, 235, 0.16);
+  text-align: center;
+}
+
+header h1 {
+  font-size: 32px;
+  font-weight: 700;
+  margin: 0 0 10px;
+  letter-spacing: -0.5px;
+}
+
+header p {
+  margin: 0;
+  color: #dbeafe;
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+/* Header button adjustment */
+header button {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: white;
+  padding: 8px 18px;
+  border-radius: 8px;
+  font-weight: 500;
+}
+
+header button:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* ==========================================
+   SUMMARY CARDS (METRICS)
+   ========================================== */
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 22px;
+  margin-bottom: 26px;
+  background: transparent; /* Wrapper ko transparent kiya */
+  padding: 0;
+  border: none;
+}
+
+.metrics h2 {
+  background: #ffffff;
+  color: #172554;
+  padding: 26px;
+  margin: 0;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  box-shadow: 0 4px 14px rgba(30, 41, 59, 0.04);
+  font-size: 19px;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+/* Left Accent Borders */
+.metrics h2:nth-child(1) { border-left: 5px solid #3b82f6; }
+.metrics h2:nth-child(2) { border-left: 5px solid #64748b; }
+.metrics h2:nth-child(3) { border-left: 5px solid #10b981; }
+
+/* ==========================================
+   CONTAINERS & CARDS
+   ========================================== */
+form,
+.card-wrapper {
+  background: #ffffff;
+  padding: 26px;
+  margin-bottom: 26px;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  box-shadow: 0 5px 20px rgba(30, 41, 59, 0.04);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+form h2,
+.card-wrapper h2 {
+  margin: 0 0 22px;
+  font-size: 23px;
+  color: #172554;
+  font-weight: 600;
+}
+
+/* ==========================================
+   PRODUCT FORM LAYOUT
+   ========================================== */
+.product-form {
+  display: block;
+}
+
+.form-title {
+  margin-bottom: 22px;
+  color: #172554;
+}
+
+.form-fields {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 16px;
+}
+
+.form-group {
+  flex: 1 1 150px;
+  min-width: 0;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #475569;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* Input Fields Styling */
+input {
+  display: block;
+  width: 100%;
+  padding: 12px 15px;
+  margin: 0;
+  border: 1px solid #cbd5e1;
+  border-radius: 9px;
+  outline: none;
+  background: #f8fafc;
+  color: #0f172a;
+  min-height: 46px;
+  transition: all 0.2s ease;
+}
+
+input:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+  background: #ffffff;
+}
+
+input::placeholder {
+  color: #94a3b8;
+}
+
+/* Buttons */
+button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 9px;
+  background: #2563eb;
+  color: white;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.add-product-btn {
+  flex: 0 0 auto;
+  min-height: 46px;
+  padding: 0 24px;
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+}
+
+/* ==========================================
+   PRODUCT INVENTORY GRID
+   ========================================== */
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.product-card {
+  background: #ffffff;
+  padding: 22px;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  box-shadow: 0 4px 14px rgba(30, 41, 59, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(30, 41, 59, 0.08);
+}
+
+.product-card h3 {
+  color: #172554;
+  font-size: 21px;
+  margin: 0;
+  font-weight: 600;
+}
+
+/* Badges and Categories */
+.product-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.product-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #eff6ff;
+  border-radius: 12px;
+  font-size: 24px;
+}
+
+.stock-badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.in-stock { background: rgba(22, 101, 52, 0.1); color: #166534; }
+.low-stock { background: rgba(146, 64, 14, 0.1); color: #92400e; }
+.out-stock { background: rgba(153, 27, 27, 0.1); color: #991b1b; }
+
+.product-category {
+  display: inline-block;
+  padding: 5px 10px;
+  background: #f1f5f9;
+  border-radius: 6px;
+  font-size: 13px;
+  color: #475569;
+}
+
+.product-details {
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.product-details p {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 8px 0;
+}
+
+.product-details span { color: #64748b; }
+.product-details strong { color: #0f172a; }
+
+/* Product Actions Buttons */
+.product-card-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.product-card-buttons button {
+  flex: 1;
+  margin: 0;
+  min-height: 42px;
+}
+
+.stock-button {
+  background: #2563eb;
+}
+
+.delete-button {
+  background: rgba(229, 72, 91, 0.1);
+  color: #e5485b;
+  border: 1px solid rgba(229, 72, 91, 0.15);
+}
+
+.delete-button:hover {
+  background: #e5485b;
+  color: white;
+}
+
+/* ==========================================
+   ACTIVITY AUDIT LOG
+   ========================================== */
+.audit-log-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.audit-log-list p {
+  padding: 10px 14px;
+  background: #f8fafc;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  margin: 0;
+  font-family: monospace;
+  font-size: 13.5px;
+  color: #475569;
+}
+
+/* ==========================================
+   🎯 PURE DARK MODE STYLES
+   ========================================== */
+.dashboard.dark-mode {
+  background: #0f172a;
+  color: #f8fafc;
+}
+
+/* Ek sath saare card containers ka background change kiya */
+.dashboard.dark-mode .metrics h2,
+.dashboard.dark-mode form,
+.dashboard.dark-mode .card-wrapper,
+.dashboard.dark-mode .product-card,
+.dashboard.dark-mode .audit-log-list p {
+  background: #1e293b;
+  color: #f1f5f9;
+  border-color: #334155;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+}
+
+.dashboard.dark-mode h2,
+.dashboard.dark-mode h3,
+.dashboard.dark-mode .form-title,
+.dashboard.dark-mode .form-group label,
+.dashboard.dark-mode .product-details strong {
+  color: #f8fafc;
+}
+
+.dashboard.dark-mode .product-category {
+  background: #334155;
+  color: #cbd5e1;
+}
+
+.dashboard.dark-mode .product-icon {
+  background: #1e3a8a;
+}
+
+.dashboard.dark-mode .product-details {
+  border-top-color: #334155;
+}
+
+/* Dark Mode Inputs */
+.dashboard.dark-mode input {
+  background: #0f172a;
+  color: #f8fafc;
+  border-color: #334155;
+}
+
+.dashboard.dark-mode input:focus {
+  border-color: #3b82f6;
+  background: #1e293b;
+}
+
+/* Dark Mode Badges Adjustments */
+.dashboard.dark-mode .in-stock { background: rgba(16, 185, 129, 0.2); color: #34d399; }
+.dashboard.dark-mode .low-stock { background: rgba(245, 158, 11, 0.2); color: #fbbf24; }
+.dashboard.dark-mode .out-stock { background: rgba(239, 68, 68, 0.2); color: #f87171; }
+
+/* ==========================================
+   RESPONSIVE DESIGN (RESPONSIVENESS)
+   ========================================== */
+@media (max-width: 768px) {
+  .dashboard {
+    padding: 16px 12px;
+  }
+
+  header {
+    padding: 25px 20px;
+  }
+
+  header h1 {
+    font-size: 26px;
+  }
+
+  form,
+  .card-wrapper {
+    padding: 20px 16px;
+  }
+
+  .form-fields {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .form-group {
+    width: 100%;
+  }
+
+  .add-product-btn {
+    width: 100%;
+  }
+}
+/* Delete button text contrast fix in dark mode */
+.dashboard.dark-mode .delete-button {
+  background: rgba(239, 68, 68, 0.15);
+  color: #f87171 !important; /* Bright light red text */
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.dashboard.dark-mode .delete-button:hover {
+  background: #ef4444;
+  color: white !important;
+}
+
+/* Labels text visibility fix inside product cards */
+.dashboard.dark-mode .product-details span {
+  color: #94a3b8 !important; /* Soft bright grey for labels like 'Price' */
+}
+
+/* Audit Log alignment fix */
+.dashboard.dark-mode .audit-log-list p,
+.dashboard.dark-mode .activity-log-item { 
+  text-align: left !important;
+  padding-left: 20px;
+}
